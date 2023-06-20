@@ -1,13 +1,33 @@
+/*
+require:
+-dotenv(connecting to DB),
+-express(controlling server), 
+-mongoose(controlling DB),
+-app (from app.js)
+
+create:
+-mongoDB connection
+-listen to PORT
+
+export:
+
+*/
+
+/*
+require('dotenv').config()
 const express = require('express')
-const app = express()
-const fs = require('fs')
-const port  = 3000
+const mongoose = require('mongoose')
+const PORT = process.env.PORT || 3000
+const app = require('./app')
 
+app.use(express.json())
 
-app.get('/',(req,res) => {
-    res.send('<h1>Hellloo World!! How are you!!</h1>')
+mongoose.connect(process.env.MONGO_URI)
+mongoose.connection.once('open', ()=>{
+    console.log('connected to MongoDB')
 })
 
-app.listen(port,() => {
-    console.log('Yes Im listening on port 3000')
+app.listen(PORT, ()=>{
+    console.log(`listening on ${PORT} yo!`)
 })
+*/
