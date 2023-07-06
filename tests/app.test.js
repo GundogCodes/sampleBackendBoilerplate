@@ -45,4 +45,7 @@ describe('Test all user endpoints', ()=>{
         expect(response.statusCode).toBe(200)
         expect(response.body.createdTodo).toHaveProperty('created_at')
     })
+
+In package.json, in the scripts object, in the test key add "jest" as its value
+Then npm run test to execute testing
 */
