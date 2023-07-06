@@ -31,4 +31,18 @@ beforeAll(async () => {
     mongoServer.stop() //getting rid of our MongoDB instance itself
     server.close()
 })
+
+describe('Test all user endpoints', ()=>{
+    
+    test('create a new todo', async ()=>{
+        const response = await request(app)
+        .post('/users/todos')
+        .send({title:'testTitle', description:'testDescription',completed:true})
+
+        expect(response.body.createdTodo.title).toEqual('testTitle')
+        expect(response.body.createdTodo.description).toEqual('testDescription')
+        expect(response.body.createdTodo.completed).toEqual(true)
+        expect(response.statusCode).toBe(200)
+        expect(response.body.createdTodo).toHaveProperty('created_at')
+    })
 */
